@@ -1,19 +1,3 @@
-// var findMedianSortedArrays = function (nums1, nums2) {
-//   let mergeArray = nums1.concat(nums2);
-//   mergeArray.sort((a, b) => a - b);
-//   console.log(mergeArray);
-//   const length = mergeArray.length;
-//   if (length == 1) return mergeArray[0];
-//   if (length % 2 === 0) {
-//     return (mergeArray[length / 2] + mergeArray[length / 2 + 1]) / 2;
-//   } else {
-//     console.log(Math.floor(length / 2));
-//     return mergeArray[Math.floor(length / 2)];
-//   }
-// };
-
-findMedianSortedArrays([], [1, 2, 3, 4, 5]);
-
 function findMedianSortedArrays(nums1, nums2) {
   const m = nums1.length;
   const n = nums2.length;

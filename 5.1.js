@@ -28,8 +28,6 @@ function longestPalindrome(originalString) {
   for (let i = 0; i < originalString.length; i++) {
     const oddPalindromeString = getPalindrome(originalString, i, i);
     const evenPalindromeString = getPalindrome(originalString, i, i + 1);
-    console.log('evenPalindromeString', evenPalindromeString);
-    console.log('oddPalindromeString', oddPalindromeString);
 
     result = getLongestStr([result, oddPalindromeString, evenPalindromeString]);
   }
@@ -37,5 +35,5 @@ function longestPalindrome(originalString) {
   return result;
 }
 
-// console.log(longestPalindrome("babad"));
-console.log(longestPalindrome("bb"));
+console.log(longestPalindrome("babad"));
+console.log(longestPalindrome("cbbd"));
