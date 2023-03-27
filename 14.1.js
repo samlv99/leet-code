@@ -43,8 +43,6 @@ function longestCommonPrefix2(strs) {
       j++;
     }
 
-    console.log('j', j);
-
     if (j === 0) return "";
 
     prefix = prefix.slice(0, j);
