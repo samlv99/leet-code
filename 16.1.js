@@ -1,33 +1,29 @@
 function threeSumClosest(nums, target) {
+  if (nums.length === 3) return sum(nums);
   nums.sort((a, b) => a - b);
-
-  let result = 0;
-  let arrNeed = [];
+  let closestSum = nums[0] + nums[1] + nums[2];
 
   for (let i = 0; i < nums.length - 2; i++) {
     let left = i + 1;
     let right = nums.length - 1;
 
     while (left < right) {
-      let tar = target - nums[i];
-      let curr = nums[left] + nums[right];
-      if (result > tar - curr) {
-        result = tar - curr;
-        arrNeed.push([result, nums[left], nums[right]]);
+      let curr = nums[left] + nums[right] + nums[i];
+      if (Math.abs(curr - target) < Math.abs(closestSum - target)) {
+        closestSum = curr;
+      } else if (curr < target) {
+        left++;
+      } else if (curr > target) {
+        right--;
+      } else {
+        return curr;
       }
-      result = Math.min(result, tar - curr);
-      left++;
-      right--;
     }
   }
-  result = sum(arrNeed[arrNeed.length - 1]);
-  return result;
-}
 
-function sum(arr) {
-  return arr.reduce((first, second) => {
-    return first + second;
-  }, 0);
+  return closestSum;
 }
 
 console.log(threeSumClosest([-1, 2, 1, -4], 1));
+console.log(threeSumClosest([0, 1, 2], 3));
+console.log(threeSumClosest([1, 1, 1, 1], 4));
