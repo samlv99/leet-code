@@ -1,54 +1,33 @@
 function letterCombinations(digits) {
+  if (!digits) return [];
+
   let result = [];
-  let mapPhoneNumber = new Map([
-    ["2", "abc"],
-    ["3", "def"],
-    ["4", "ghi"],
-    ["5", "jkl"],
-    ["6", "mno"],
-    ["7", "pqrs"],
-    ["8", "tuv"],
-    ["9", "wxyz"],
-  ]);
-  console.log(mapPhoneNumber.get(digits[0]));
-  if (digits.length === 1)
-    return combinations(mapPhoneNumber.get(digits[0]), "");
+  const mapPhoneNumber = {
+    2: ["a", "b", "c"],
+    3: ["d", "e", "f"],
+    4: ["g", "h", "i"],
+    5: ["j", "k", "l"],
+    6: ["m", "n", "o"],
+    7: ["p", "q", "r", "s"],
+    8: ["t", "u", "v"],
+    9: ["w", "x", "y", "z"],
+  };
 
-  for (let i = 0; i < digits.length - 1; i++) {
-    let j = i + 1;
-
-    while (j < digits.length) {
-      combinations(
-        mapPhoneNumber.get(digits[i]),
-        mapPhoneNumber.get(digits[j])
-      ).map((x) => result.push(x));
-      j++;
+  const backtrack = (index, str) => {
+    if (index === digits.length) {
+      result.push(str);
+      return;
     }
-  }
+
+    for (const letter of mapPhoneNumber[digits[index]]) {
+      backtrack(index + 1, str + letter);
+    }
+  };
+
+  backtrack(0, "");
 
   return result;
 }
 
-function combinations(str1, str2) {
-  let result = [];
-  if (str1.length === 0) {
-    for (let i = 0; i < str2.length; i++) {
-      result.push(str2[i]);
-    }
-  } else if (str2.length === 0) {
-    for (let i = 0; i < str1.length; i++) {
-      result.push(str1[i]);
-    }
-  } else {
-    for (let i = 0; i < str1.length; i++) {
-      for (let j = 0; j < str2.length; j++) {
-        result.push(str1[i] + str2[j]);
-      }
-    }
-  }
-
-  return result;
-}
-
-// console.log(letterCombinations("234"));
+console.log(letterCombinations("234"));
 console.log(letterCombinations("2"));
