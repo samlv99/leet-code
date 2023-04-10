@@ -7,7 +7,7 @@ class Node {
 }
 
 // linkedList class to represent a linked list
-class linkedList {
+class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -44,5 +44,42 @@ class linkedList {
     if (!this.head) {
       return;
     }
+
+    if (this.head.data === data) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next && currentNode.next.data !== data) {
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode.next && currentNode.next.data === data) {
+      currentNode.next = currentNode.next.next;
+    }
+
+    if (this.tail.data === data) {
+      this.tail = currentNode;
+    }
+  }
+
+  // Method to display the linked list as an array
+  toArray() {
+    let result = [];
+    let currentNode = this.head;
+    while (currentNode) {
+      result.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+
+    return result;
   }
 }
+
+const linked = new LinkedList();
+linked.append(1);
+linked.append(2);
+linked.prepend(3);
+linked.delete(2);
+console.log(linked.toArray());
