@@ -24,6 +24,7 @@ function removeNthFromEnd(head, n) {
   if (slow.next !== null) {
     slow.next = slow.next.next;
   }
+  
   return head;
 }
 
