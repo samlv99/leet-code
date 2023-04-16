@@ -1,26 +1,21 @@
 function generateParenthesis(n) {
   const result = [];
 
-  generate(result, "", 0, 0, n);
+  const backtrack = (s, open, close) => {
+    if (s.length === n * 2) {
+      result.push(s);
+      return;
+    }
+
+    if (open < n) backtrack(s + "(", open + 1, close);
+
+    if (close < open) backtrack(s + ")", open, close + 1);
+  };
+
+  backtrack("", 0, 0);
 
   return result;
 }
 
-function generate(result, s, open, close, n) {
-  if (open === n && close === n) {
-    result.push(s);
-    return;
-  }
+console.log(generateParenthesis(2));
 
-  if (open < n) {
-    console.log("here 1");
-    generate(result, s + "(", open + 1, close, n);
-  }
-
-  if (close < open) {
-    console.log("here 2");
-    generate(result, s + ")", open, close + 1, n);
-  }
-}
-
-console.log(generateParenthesis(3));
