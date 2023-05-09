@@ -27,4 +27,3 @@ function nextPermutation(nums) {
 
 console.log(nextPermutation([4, 3, 5, 1, 2]));
 console.log(nextPermutation([1, 3, 2]));
-console.log(nextPermutation([5, 4, 3]));
