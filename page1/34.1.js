@@ -29,4 +29,3 @@ function searchRange(nums, target) {
 console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
 console.log(searchRange([5, 7, 7, 8, 10], 8));
 console.log(searchRange([1, 3], 1));
-// left = 0, right = 5
